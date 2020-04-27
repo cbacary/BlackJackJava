@@ -23,8 +23,25 @@ public class Helper
     public static int getSumWorth(ArrayList<Cards> cards)
     {
         int sum = 0;
+        int tempSum = 0;
+        for (int i = 0; i < cards.size(); i++)
+        {
+            if (cards.get(i).getCardWorth() == 11)
+            {
+                for (Cards x: cards)
+                {
+                    tempSum += x.getCardWorth();
+                }
+                if (tempSum > 21)
+                {
+                    cards.get(i).setCardWorth(1);
+                }
+            }
+        }
         for (Cards i: cards)
+        {
             sum += i.getCardWorth();
+        }
         return sum;
     }
 

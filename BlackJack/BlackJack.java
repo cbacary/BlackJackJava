@@ -63,6 +63,10 @@ public class BlackJack
             // checking for natural.
             if (naturalCheck(players, dealer))
             {
+                for (Player i: players)
+                {
+                    i.reset();
+                }
                 continue;
             }
 
@@ -133,6 +137,8 @@ public class BlackJack
         Scanner scanner = new Scanner(System.in);
         for (Player i: players)
         {
+            if (i.getSkip())
+                continue;
             String play = "";
             while (!play.toLowerCase().equals("stand"))
             {
@@ -214,7 +220,7 @@ public class BlackJack
             {
                 if (i.getNatural())
                 {
-                    System.out.println(i.getName() + " has a natural, you get " + (int) (i.getWager() * 1.5));
+                    System.out.println(i.getName() + " you have a natural, you get " + (int) (i.getWager() * 1.5));
                     i.setWinAmount((int) (i.getWager() * 1.5));
                     i.setSkip(true);
                 }

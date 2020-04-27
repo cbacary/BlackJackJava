@@ -20,6 +20,11 @@ public class Cards
         return cardWorth;
     }
 
+    public void setCardWorth(int x)
+    {
+        cardWorth = x;
+    }
+
     public String getType() 
     {
         return type;

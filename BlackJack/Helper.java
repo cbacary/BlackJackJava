@@ -65,19 +65,4 @@ public class Helper
             deck.set(i, temp);
         }
     }
-
-    public static String cardArrayToString(ArrayList<Cards> cards)
-    {
-        String str = "";
-        
-        str += cards.get(0).getCardNumber() + "-" + cards.get(1).getCardNumber();
-
-        // checking if pair is suited.
-        if (cards.get(0).getType().equals(cards.get(1).getType()))
-            str += (" (suited)");
-        else
-            str += (" (unsuited)");
-
-        return str;
-    }
 }

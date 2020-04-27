@@ -7,18 +7,11 @@ public class Dealer
 
     private ArrayList<Cards> dealerDeck; // the 312 cards
     private ArrayList<Cards> dealerCards; // the 2 cards we he will get.
-    private int dealersWorth;
 
     public Dealer(ArrayList<Cards> deck)
     {
         dealerCards = new ArrayList<Cards>();
         dealerDeck = deck;
-        dealersWorth = 0;
-    }
-    public void putCardInPlay()
-    {
-        dealerCards.add(dealerDeck.get(0));
-        dealerDeck.remove(0);
     }
 
     // returns true if dealer has a natural an ace and 11 at beginning of game.
@@ -64,12 +57,13 @@ public class Dealer
         return dealerCards.get(0);
     }
 
-    public void printDeck()
+    public String printDeck()
     {
+        String str = "";
         if (dealerCards.size() > 0)
             for (Cards i: dealerCards)
-                System.out.print(i);
-        System.out.print(" With a total worth of " + Helper.getSumWorth(dealerCards));
+                str += i.toString();
+        return str + " With a total worth of " + Helper.getSumWorth(dealerCards);
     }
 
     public int getWorth()

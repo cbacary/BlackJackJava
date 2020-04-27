@@ -25,7 +25,7 @@ public class Player {
         if (cards.size() > 0)
             for (Cards i: cards)
             {str += i + " |||| ";}
-        str += " with a total worth of " + Helper.getSumWorth(cards) + ". " + name + " has " + chips;
+        str += " with a total worth of " + Helper.getSumWorth(cards) + ". " + name + " has $" + chips;
         return str;
     }
 
@@ -83,12 +83,9 @@ public class Player {
 
     public boolean getNatural()
     {
-        for (Cards i: cards)
+        if (Helper.getSumWorth(cards) == 21)
         {
-            if (Helper.getSumWorth(cards) == 21)
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }

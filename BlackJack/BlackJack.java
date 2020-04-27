@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.lang.*;
+import java.lang.Thread;
 
 public class BlackJack
 {
@@ -38,7 +38,7 @@ public class BlackJack
 
             for (Player i: players)
             {
-                System.out.println(i.printStats());
+                System.out.println(i.getName() + " has $" + i.getChips());
             }
 
             // beginning wagers starts here
@@ -67,7 +67,7 @@ public class BlackJack
             }
 
             // check if they want to stand or hit  
-            System.out.print("\n\nBeginning Play Stage...");
+            System.out.print("\n\nBeginning Play Stage...\n");
             playStage(players, dealer);
             
             // now I think all we have to do is have dealer go.
@@ -86,7 +86,7 @@ public class BlackJack
         {
             dealer.giveCardToSelf(1);
         }
-        System.out.print("Dealer has: "); dealer.printDeck();
+        System.out.print("Dealer has: " + dealer.printDeck() + "\n\n");
         System.out.println();
         if (dealer.checkForBust()) // if dealer busted
         {
@@ -189,10 +189,8 @@ public class BlackJack
     public static boolean naturalCheck(ArrayList<Player> players, Dealer dealer)
     {
         Scanner scanner = new Scanner(System.in);
-        boolean setContinue = false;
         if (dealer.getNatural())
         {
-            setContinue = true;
             System.out.println("\nDealer has a natural.");
             // check for player natural
             for (Player i: players)
@@ -212,10 +210,8 @@ public class BlackJack
         // checking for player natural
         else
         {
-            boolean oneNatural = false;
             for (Player i: players)
             {
-                oneNatural = true;
                 if (i.getNatural())
                 {
                     System.out.println(i.getName() + " has a natural, you get " + (int) (i.getWager() * 1.5));
